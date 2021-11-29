@@ -25,19 +25,30 @@ using namespace std;
 
 int menu(int);
 
+int datos(int);
+
 int main(int argc, char** argv) {
-  int opcion,desplegar;
+  int opcion,desplegar,indatos;
 
   cout<<"Bienvenido a la ROCH: XBOX GAMES STORE \n";
 
-  cout<<"Desea ver nuestra librería de juegos? \n1.Si \n2.No \n";
-  cin>>desplegar;
-  if (desplegar==1){
-    menu(opcion);
+  cout<<"Desea darnos un poco de información sobre usted antes de entrar a la tienda? \n1.Si \n2.No \n";
+  cin>>indatos;
+  if(indatos==1){
+    datos(indatos);
   }
-  else if(desplegar==2){
-    cout<<"Hasta luego, vuelva pronto :)";
+  else if (indatos == 2){
+    cout<<"Desea ver nuestra librería de juegos? \n1.Si \n2.No \n";
+    cin>>desplegar;
+    if (desplegar==1){
+      menu(opcion);
+    }
+    else if(desplegar==2){
+      cout<<"Hasta luego, vuelva pronto :)";
+    }
   }
+
+
 
 
 
@@ -46,8 +57,8 @@ int main(int argc, char** argv) {
 }
 
 int menu(int option){
-  int opcion,use;
-  bool usar=true;
+  int opcion,use,add;
+  bool usar=true,agregar=true;
   Videojuegos* uno = new Videojuegos("AccionAventura");
   Videojuegos* dos = new Videojuegos("Carreras");
   Videojuegos* tres = new Videojuegos("Deportes");
@@ -80,7 +91,18 @@ int menu(int option){
     case 10: decimo -> visualizarSurvivalHorror(); break;
     default: cout<<"Hasta luego"; return 0;
   }
-  cout<<"¿Quieres ver más juegos? \n1.Si \n2.No"<<endl;
+  cout<<"¿Gustaría agregar a su carrito alguno de estos juegos?\n1.Si \n2.No";
+  cin>>use;
+  while (agregar==true){
+  if (use ==1){
+    add=true;
+    cout<<"******Ingrese el ID******\n";
+  }
+  else{
+    agregar=false;
+  }
+  }
+  cout<<"¿Quieres ver juegos de otro géneros? \n1.Si \n2.No\n"<<endl;
     cin>>use;
     if (use == 1){
       usar = true;
@@ -93,5 +115,48 @@ int menu(int option){
     }
 
   }
+  return 0;
+}
+int datos(int opcion){
+  int desplegar;
+   string nombre1,apellido_materno1,apellido_paterno1,edad1,telefono1,pais1,ciudad1,direccion1;
+    cout<<"Introduce tu nombre:\n ";
+   cin.ignore();
+   getline(cin,nombre1);
+   cout<<"Introduce tu apellido paterno:\n ";
+   getline(cin,apellido_paterno1);
+
+   cout<<"Introduce tu apellido materno:\n ";
+   getline(cin,apellido_materno1);
+
+   cout<<"Introduce tu edad: \n";
+   cin>>edad1;
+
+   cout<<"Introduce tu número telefónico:\n ";
+   cin.ignore();
+   getline(cin,telefono1);
+
+   cout<<"Introduce tu pais:\n ";
+   cin>>pais1;
+
+   cout<<"Introduce tu ciudad:\n ";
+   cin>>ciudad1;
+
+   cout<<"Introduce tu direccion:\n ";
+   cin.ignore();
+   getline(cin,direccion1);
+
+
+   Cliente* cliente1 = new Cliente(nombre1,apellido_materno1,apellido_paterno1,edad1,telefono1,pais1,ciudad1,direccion1);
+
+   cout<<"Bienvenido/a "<<cliente1->get_nombre();cout<<"\n";
+   cout<<"Desea ver nuestra librería de juegos? \n1.Si \n2.No \n";
+    cin>>desplegar;
+    if (desplegar==1){
+      menu(opcion);
+    }
+    else if(desplegar==2){
+      cout<<"Hasta luego, vuelva pronto :)";
+    }
   return 0;
 }
