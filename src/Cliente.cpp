@@ -13,16 +13,22 @@ Cliente::Cliente(){
   direccion = "";
 }
 
-Cliente::Cliente(std::string name,std::string ap1, std::string ap2, std::string age, std::string tel, std::string paisc, std::string city, std::string dir){
-  nombre = name;
-  apellido1 = ap1;
-  apellido2 = ap2;
-  edad = age;
-  telefono = tel;
-  pais = paisc;
-  ciudad = city;
-  direccion = dir;
+Cliente::Cliente(std::string nombre){
+  this -> nombre = nombre;
 }
+
+Cliente::Cliente(std::string nombre, std::string apellido1, std::string apellido2, std::string edad, std::string telefono, std::string pais, std::string ciudad, std::string direccion){
+  this -> nombre = nombre;
+  this -> apellido1 = apellido1;
+  this -> apellido2 = apellido2;
+  this -> edad = edad;
+  this -> telefono = telefono;
+  this -> pais = pais;
+  this -> ciudad = ciudad;
+  this -> direccion = direccion;
+}
+
+
 
 std::string Cliente::get_nombre(){
   return nombre;

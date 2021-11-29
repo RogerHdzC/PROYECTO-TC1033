@@ -1,3 +1,7 @@
+#ifndef VIDEOJUEGOS_H
+#define VIDEOJUEGOS_H
+
+
 #include <string>
 
 class Videojuegos{
@@ -8,26 +12,19 @@ class Videojuegos{
     std::string Online;
     std::string Clasificacion;
     std::string GENERO;
-    int Precio;
+    std::string id;
+    float Precio;
 
 
   //MÉTODOS
   public:
-    Videojuegos(std::string Nombre, int NuJugadores, std::string Clasificacion, int Precio,std::string GENERO, std::string Online){ //CONSTRUCTOR
-      this -> Nombre = Nombre;
-      this -> NuJugadores = NuJugadores;
-      this -> Clasificacion = Clasificacion;
-      this -> Precio = Precio;
-      this -> Online = Online;
-    }
-    Videojuegos(std::string GENERO){}
+    Videojuegos();
 
-    std::string getNombre();
-    int getNuJugadores();
-    std::string getOnline();
-    bool multiplayer(Videojuegos& d);
-    std::string getClasificacion();
-    int getPrecio();
+    Videojuegos(std::string GENERO);
+
+    Videojuegos(int id);
+
+    int visualizarPrecio(int id);
     void visualizarDeportes();
     void visualizarAccionAventura();
     void visualizarCarreras();
@@ -40,3 +37,5 @@ class Videojuegos{
     void visualizarSurvivalHorror();
 
 };
+
+#endif

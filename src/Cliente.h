@@ -1,3 +1,6 @@
+#ifndef CLIENTE_H
+#define CLIENTE_H
+
 #include <string>
 
 class Cliente{
@@ -10,7 +13,8 @@ class Cliente{
     //Constructor
     Cliente();
 
-    Cliente(std::string name, std::string ap1, std::string ap2, std::string age, std::string tel, std::string paisc, std::string city, std::string dir);
+    Cliente(std::string nombre);
+    Cliente(std::string nombre, std::string apellido1, std::string apellido2, std::string edad, std::string telefono, std::string pais, std::string ciudad, std::string direccion);
 
     std::string get_nombre();
     std::string get_apellido1();
@@ -21,3 +25,5 @@ class Cliente{
     std::string get_ciudad();
     std::string get_direccion();
 };
+
+#endif

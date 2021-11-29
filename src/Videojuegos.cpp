@@ -9,33 +9,62 @@ using namespace std;
 #include "Videojuegos.h"
 
 using namespace std;
-
-bool Videojuegos::multiplayer(Videojuegos& d){
-  if (Online == "Si"){
-    return true;
-  }
-  else{
-    return false;
-  }
-}
-std::string Videojuegos::getNombre(){
-  return Nombre;
-}
-int Videojuegos::getNuJugadores(){
-  return NuJugadores;
-}
-std::string Videojuegos::getClasificacion(){
-  return Clasificacion;
-}
-std::string Videojuegos::getOnline(){
-
-  return Online;
-}
-int Videojuegos::getPrecio(){
-
-  return Precio;
+Videojuegos::Videojuegos(){
+  Nombre="";
+  NuJugadores=0;
+  Online="";
+  Clasificacion="";
+  GENERO = "";
+  id = "";
+  float Precio;
 }
 
+Videojuegos::Videojuegos(std::string GENERO){
+  this -> GENERO = GENERO;
+}
+
+Videojuegos::Videojuegos(int id){
+  this -> id=id;
+}
+
+
+int Videojuegos::visualizarPrecio(int id){
+  float price=0;
+  stringstream ss;
+  ss<<id;
+  string s;
+  ss>>s;
+  ifstream archivo(NOMBRE_ARCHIVO);
+    string linea;
+    char delimitador = ',';
+    // Leemos la primer línea para descartarla, pues es el encabezado
+    getline(archivo, linea);
+    // Leemos todas las líneas
+    while (getline(archivo, linea))
+    {
+
+        stringstream stream(linea); // Convertir la cadena a un stream
+        string ID,NOMBRE, GENERO, JUGADORES, ONLINE, CLASIFICACION, PRECIO;
+        // Extraer todos los valores de esa fila
+        getline(stream, ID, delimitador);
+        getline(stream, NOMBRE, delimitador);
+        getline(stream, GENERO, delimitador);
+        getline(stream, JUGADORES, delimitador);
+        getline(stream, ONLINE, delimitador);
+        getline(stream, CLASIFICACION, delimitador);
+        getline(stream, PRECIO, delimitador);
+
+        // Imprimir
+        if (ID == s){
+        cout << "Precio: " << PRECIO <<"\n"<<endl;
+
+        }
+    }
+
+    archivo.close();
+
+  return 0;
+}
 void Videojuegos::visualizarDeportes(){
   ifstream archivo(NOMBRE_ARCHIVO);
     string linea;
@@ -111,7 +140,7 @@ void Videojuegos::visualizarAccionAventura(){
 
 }
 void Videojuegos::visualizarCarreras(){
-ifstream archivo(NOMBRE_ARCHIVO);
+  ifstream archivo(NOMBRE_ARCHIVO);
     string linea;
     char delimitador = ',';
     // Leemos la primer línea para descartarla, pues es el encabezado
@@ -148,7 +177,7 @@ ifstream archivo(NOMBRE_ARCHIVO);
 
 }
 void Videojuegos::visualizarFPS(){
-ifstream archivo(NOMBRE_ARCHIVO);
+  ifstream archivo(NOMBRE_ARCHIVO);
     string linea;
     char delimitador = ',';
     // Leemos la primer línea para descartarla, pues es el encabezado
@@ -185,7 +214,7 @@ ifstream archivo(NOMBRE_ARCHIVO);
 
 }
 void Videojuegos::visualizarLucha(){
-ifstream archivo(NOMBRE_ARCHIVO);
+  ifstream archivo(NOMBRE_ARCHIVO);
     string linea;
     char delimitador = ',';
     // Leemos la primer línea para descartarla, pues es el encabezado
@@ -222,7 +251,7 @@ ifstream archivo(NOMBRE_ARCHIVO);
 
 }
 void Videojuegos::visualizarPlataforma(){
-ifstream archivo(NOMBRE_ARCHIVO);
+  ifstream archivo(NOMBRE_ARCHIVO);
     string linea;
     char delimitador = ',';
     // Leemos la primer línea para descartarla, pues es el encabezado
@@ -259,7 +288,7 @@ ifstream archivo(NOMBRE_ARCHIVO);
 
 }
 void Videojuegos::visualizarRol(){
-ifstream archivo(NOMBRE_ARCHIVO);
+  ifstream archivo(NOMBRE_ARCHIVO);
     string linea;
     char delimitador = ',';
     // Leemos la primer línea para descartarla, pues es el encabezado
@@ -295,7 +324,7 @@ ifstream archivo(NOMBRE_ARCHIVO);
 
 }
 void Videojuegos::visualizarRpg(){
-ifstream archivo(NOMBRE_ARCHIVO);
+  ifstream archivo(NOMBRE_ARCHIVO);
     string linea;
     char delimitador = ',';
     // Leemos la primer línea para descartarla, pues es el encabezado
@@ -332,7 +361,7 @@ ifstream archivo(NOMBRE_ARCHIVO);
 
 }
 void Videojuegos::visualizarShooter(){
-ifstream archivo(NOMBRE_ARCHIVO);
+  ifstream archivo(NOMBRE_ARCHIVO);
     string linea;
     char delimitador = ',';
     // Leemos la primer línea para descartarla, pues es el encabezado
