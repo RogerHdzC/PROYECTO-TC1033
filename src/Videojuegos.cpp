@@ -55,8 +55,16 @@ int Videojuegos::visualizarPrecio(int id){
         getline(stream, PRECIO, delimitador);
 
         // Imprimir
+
         if (ID == s){
-        cout << "Precio: " << PRECIO <<"\n"<<endl;
+          cout << "==================" <<"\n"<<endl;
+          cout<< "ID: " << ID <<"\n"<< endl;
+          cout << "Nombre: " << NOMBRE <<"\n"<< endl;
+          cout << "Género: " << GENERO <<"\n"<< endl;
+          cout << "Número de jugadores: " << JUGADORES <<"\n"<< endl;
+          cout << "Tiene juego online: " << ONLINE <<"\n"<< endl;
+          cout << "Clasificación: " << CLASIFICACION <<"\n"<< endl;
+          cout << "Precio: " << PRECIO <<"\n"<< endl;
 
         }
     }
